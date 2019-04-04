@@ -5,8 +5,8 @@ var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/til
 }).addTo(SC_county)
 let SCCountyUrl = 'https://lsuga.maps.arcgis.com/home/item.html?id=a5a8d9ccbf2f4957aa95a896cac6a1a1'
 jQuery.getJSON(SCCountyUrl, function (data) {
-  L.geoJSON(data).addTo(SC_County)
+  L.geoJSON(data).addTo(SC_county)
 })
 let stateStyle = { color: 'orange' }
 let stateGeojsonOptions = { style: stateStyle }
-L.geoJSON(data, stateGeojsonOptions).addTo(SC_County)
+L.geoJSON(data, stateGeojsonOptions).addTo(SC_county)
