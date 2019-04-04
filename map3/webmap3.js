@@ -7,6 +7,16 @@ let SCHospitalPoints = 'https://cmcanan.github.io/map3/SC_Hospitals_Point_data.g
 jQuery.getJSON(SCHospitalPoints, function (data) {
   L.geoJSON(data).addTo(SC_county)
 })
-let stateStyle = { color: 'orange' }
-let stateGeojsonOptions = { style: stateStyle }
-L.geoJSON(data, stateGeojsonOptions).addTo(SC_county)
+let SCCountyLayer = 'https://cmcanan.github.io/map3/DLG_CountyBND.geojson'
+jQuery.getJSON(SCCountyLayer, function (data) {
+	let mapOptions = function (feature) {
+  let stateColor = 'olive'
+  return {
+    color: 'orange',
+    weight: 1,
+    fillOpacity: 0.2
+  }
+}
+	let styleOptions = { style: mapOptions }
+	L.geoJSON(data, styleOptions).addTo(SC_county)
+})
