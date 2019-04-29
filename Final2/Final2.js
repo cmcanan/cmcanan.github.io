@@ -3,26 +3,19 @@ var OpenMapSurfer_Roads = L.tileLayer('https://maps.heigit.org/openmapsurfer/til
   maxZoom: 19,
   attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(SC_county)
-let SCCountyLayer = 'https://cmcanan.github.io/map3/DLG_CountyBND.geojson'
-jQuery.getJSON(SCCountyLayer, function (data) {
+let SCHospitalLayer = 'https://cmcanan.github.io/Final2/SC_Hospitals_Point_data.geojson'
+jQuery.getJSON(SCHospitalLayer, function (data) {
   let colorStyle = function (feature) {
-		let size = feature.properties.ACRES
-		let countyColor = 'blue'
-		if ( size < 600000 ) { countyColor = 'red'}
-		return {
-      color: countyColor,
-      weight: 2,
-      fillOpacity: 0.2
-    }
+		}
   }
-  let createCountyPopup = function (feature, layer) {
-	  let name = feature.properties.COUNTYNM
-	  let size = feature.properties.ACRES
-	  layer.bindPopup('Size of ' + name + ' County' + '= ' + size + ' acres' )
+  let createHospitalPopup = function (feature, layer) {
+	  let name = feature.properties.Hospital
+	  let size = feature.properties.Beds
+	  layer.bindPopup('Size of ' + name + '= ' + size + ' beds' )
   }
-  let SCCountyGeoJSON = {
+  let SCHospitalGeoJSON = {
     style: colorStyle,
     onEachFeature: createCountyPopup
   }
-  L.geoJSON(data, SCCountyGeoJSON).addTo(SC_county)
+  L.geoJSON(data, SCHospitalGeoJSON).addTo(SC_county)
 })
