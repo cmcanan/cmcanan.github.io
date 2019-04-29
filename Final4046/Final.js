@@ -1,5 +1,5 @@
 function init () {
-  let demoMap = L.map('map').setView([32.18, -99.14], 4)
+  let demoMap = L.map('Final').setView([32.18, -99.14], 4)
   L.tileLayer('https://tile.thunderforest.com/spinal-map/{z}/{x}/{y}.png?apikey=9e58ec91b076457dbf9835a1932e032c', {
     attribution: 'Thunderforest'
   }).addTo(demoMap)
